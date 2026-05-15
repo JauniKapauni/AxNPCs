@@ -37,9 +37,14 @@ public class CreateCommand implements CommandExecutor {
 
         String id = UUID.randomUUID().toString();
         String path = "npcs."+ id;
+        String cmd = "";
+        for(int i = 1; i < args.length; i++){
+            cmd += args[i] + " ";
+        }
 
         reference.getConfig().set(path + ".name", args[0]);
         reference.getConfig().set(path + ".location", p.getLocation());
+        reference.getConfig().set(path + ".command", cmd);
         reference.saveConfig();
 
         p.sendMessage("NPC created and saved!");
