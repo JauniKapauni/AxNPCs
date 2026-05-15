@@ -1,11 +1,13 @@
 package de.jaunikapauni.axnpcs.command;
 
 import de.jaunikapauni.axnpcs.AxNPCs;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
+import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -17,6 +19,7 @@ public class CreateCommand implements CommandExecutor {
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
+        NamespacedKey npcKey = new NamespacedKey(reference, "npc");
         Player p = (Player) sender;
         Villager npc = p.getWorld().spawn(p.getLocation(), Villager.class);
 
@@ -27,6 +30,7 @@ public class CreateCommand implements CommandExecutor {
         }
         npc.setCustomName(args[0]);
         npc.setCustomNameVisible(true);
+        npc.getPersistentDataContainer().set(npcKey, PersistentDataType.BYTE, (byte) 1);
 
         String id = UUID.randomUUID().toString();
         String path = "npcs."+ id;

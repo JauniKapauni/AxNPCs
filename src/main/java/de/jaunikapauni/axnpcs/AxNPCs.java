@@ -1,8 +1,10 @@
 package de.jaunikapauni.axnpcs;
 
 import de.jaunikapauni.axnpcs.command.CreateCommand;
-import org.bukkit.Location;
+import org.bukkit.*;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Villager;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class AxNPCs extends JavaPlugin {
@@ -21,6 +23,14 @@ public final class AxNPCs extends JavaPlugin {
     }
 
     public void loadNpcs(){
+        NamespacedKey npcKey = new NamespacedKey(this, "npc");
+        for(World world : Bukkit.getServer().getWorlds()){
+            for(Entity entity : world.getEntities()){
+                if(entity.getPersistentDataContainer().has(npcKey, PersistentDataType.BYTE)){
+                    entity.remove();
+                }
+            }
+        }
         if(getConfig().getConfigurationSection("npcs") == null){
             return;
         }
@@ -28,6 +38,13 @@ public final class AxNPCs extends JavaPlugin {
             String path = "npcs." + key + ".";
 
             Location loc = getConfig().getLocation(path + "location");
+            loc.getChunk().load();
+            Chunk chunk = loc.getChunk();
+            for(Entity entity2 : chunk.getEntities()){
+                if(entity2.getPersistentDataContainer().has(npcKey, PersistentDataType.BYTE)){
+                    entity2.remove();
+                }
+            }
             String name = getConfig().getString(path + "name");
 
             if(loc != null){
@@ -35,6 +52,8 @@ public final class AxNPCs extends JavaPlugin {
                 npc.setAI(false);
                 npc.setInvulnerable(true);
                 npc.setCustomName(name);
+                npc.setCustomNameVisible(true);
+                npc.getPersistentDataContainer().set(npcKey, PersistentDataType.BYTE, (byte) 1);
             }
         }
     }
