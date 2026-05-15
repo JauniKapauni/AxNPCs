@@ -19,6 +19,9 @@ public class CreateCommand implements CommandExecutor {
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
+        if(args.length == 0){
+            return false;
+        }
         NamespacedKey npcKey = new NamespacedKey(reference, "npc");
         Player p = (Player) sender;
         Villager npc = p.getWorld().spawn(p.getLocation(), Villager.class);
