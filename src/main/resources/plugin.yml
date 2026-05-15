@@ -1,0 +1,11 @@
+name: AxNPCs
+description: $description
+prefix: AxNPCs
+version: '${version}'
+
+main: de.jaunikapauni.axnpcs.AxNPCs
+api-version: '26.1.2'
+load: POSTWORLD
+
+authors: [ JauniKapauni ]
+website: https://github.com/JauniKapauni
