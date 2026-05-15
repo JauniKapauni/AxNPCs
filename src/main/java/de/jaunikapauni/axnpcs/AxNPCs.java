@@ -1,6 +1,7 @@
 package de.jaunikapauni.axnpcs;
 
 import de.jaunikapauni.axnpcs.command.CreateCommand;
+import de.jaunikapauni.axnpcs.command.RemoveCommand;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Villager;
@@ -14,6 +15,7 @@ public final class AxNPCs extends JavaPlugin {
         // Plugin startup logic
         saveDefaultConfig();
         getCommand("create").setExecutor(new CreateCommand(this));
+        getCommand("remove").setExecutor(new RemoveCommand(this));
         loadNpcs();
     }
 

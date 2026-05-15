@@ -14,3 +14,6 @@ commands:
   create:
     usage: /create <name>
     description: Create a npc
+  remove:
+    usage: /remove
+    description: Remove a npc
