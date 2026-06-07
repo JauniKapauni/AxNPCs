@@ -19,6 +19,13 @@ public final class AxNPCs extends JavaPlugin {
         getCommand("remove").setExecutor(new RemoveCommand(this));
         getServer().getPluginManager().registerEvents(new PlayerInteractEntityListener(this), this);
         loadNpcs();
+        getLogger().info("");
+        getLogger().info("----------------------------------------");
+        getLogger().info("Name: " + getName());
+        getLogger().info("Version: " + getDescription().getVersion());
+        getLogger().info(String.join("Authors: " + ", ", getDescription().getAuthors()));
+        getLogger().info("----------------------------------------");
+        getLogger().info("");
     }
 
     @Override
