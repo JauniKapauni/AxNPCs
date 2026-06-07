@@ -1,6 +1,8 @@
 # AxNPCs
 > Minecraft plugin to create npcs
 ---
+## Requirements
+- Minecraft Paper 26.1.2 Server
 ## Features
 - Create NPC
 - Remove NPC
