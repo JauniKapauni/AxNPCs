@@ -13,8 +13,13 @@
 2. Put the `.jar` into the `/plugins` folder of every server to be synchronized
 3. Start the server
 ---
+## Commands & Permissions
+- `/create` - `axfriends.create`
+- `/remove` - `axfriends.remove`
+---
 ## Support
 Discord: [AxForge](https://discord.gg/rYSxV4daS8)
+
 ---
 ## License
 AxNPCs is licensed under the permissive MIT License. Please see [LICENSE](https://github.com/JauniKapauni/AxNPCs/blob/master/LICENSE) for more info.
