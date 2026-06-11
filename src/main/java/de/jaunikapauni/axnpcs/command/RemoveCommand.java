@@ -20,6 +20,10 @@ public class RemoveCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         Player p = (Player) sender;
+        if(!p.hasPermission("axnpcs.remove")){
+            p.sendMessage("You don't have the permission! [axnpcs.remove]");
+            return true;
+        }
         Entity targetEntity = p.getTargetEntity(1);
         if(targetEntity != null){
             Location locOfTargetE = targetEntity.getLocation();

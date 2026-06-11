@@ -24,6 +24,10 @@ public class CreateCommand implements CommandExecutor {
         }
         NamespacedKey npcKey = new NamespacedKey(reference, "npc");
         Player p = (Player) sender;
+        if(!p.hasPermission("axnpcs.create")){
+            p.sendMessage("You don't have the permission! [axnpcs.create]");
+            return true;
+        }
         Villager npc = p.getWorld().spawn(p.getLocation(), Villager.class);
 
         npc.setAI(false);
