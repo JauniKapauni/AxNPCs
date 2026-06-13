@@ -14,8 +14,8 @@
 3. Start the server
 ---
 ## Commands & Permissions
-- `/create` - `axfriends.create`
-- `/remove` - `axfriends.remove`
+- `/create` - `axnpcs.create`
+- `/remove` - `axnpcs.remove`
 ---
 ## Support
 Discord: [AxForge](https://discord.gg/rYSxV4daS8)
