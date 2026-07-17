@@ -31,6 +31,9 @@ public class RemoveCommand implements CommandExecutor {
         Entity targetEntity = p.getTargetEntity(1);
         if(targetEntity != null){
             Location locOfTargetE = targetEntity.getLocation();
+            if(reference.getConfig().getConfigurationSection("npcs") == null){
+                return true;
+            }
             for(String key : reference.getConfig().getConfigurationSection("npcs").getKeys(false)){
                 String path = "npcs." + key;
                 Location loc = reference.getConfig().getLocation(path + ".location");
