@@ -21,7 +21,6 @@ public class PlayerInteractEntityListener implements Listener {
     public void onInteract(PlayerInteractEntityEvent e){
         Player p = e.getPlayer();
         if(!p.hasPermission("axnpcs.use")){
-            p.sendMessage("You don't have the permission! [axnpcs.use]");
             return;
         }
         Entity entity = e.getRightClicked();
