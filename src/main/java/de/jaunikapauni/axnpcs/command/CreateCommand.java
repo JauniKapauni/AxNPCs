@@ -24,9 +24,6 @@ public class CreateCommand implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
-        if(args.length == 0){
-            return false;
-        }
         NamespacedKey npcKey = new NamespacedKey(reference, "npc");
         if(!p.hasPermission("axnpcs.create")){
             p.sendMessage("You don't have the permission! [axnpcs.create]");
