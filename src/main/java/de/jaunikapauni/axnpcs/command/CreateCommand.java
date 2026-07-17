@@ -30,13 +30,14 @@ public class CreateCommand implements CommandExecutor {
             p.sendMessage("You don't have the permission! [axnpcs.create]");
             return true;
         }
+        if(args.length == 0){
+            return false;
+        }
         Villager npc = p.getWorld().spawn(p.getLocation(), Villager.class);
 
         npc.setAI(false);
         npc.setInvulnerable(true);
-        if(args.length == 0){
-            return false;
-        }
+
         npc.setCustomName(args[0]);
         npc.setCustomNameVisible(true);
         npc.getPersistentDataContainer().set(npcKey, PersistentDataType.BYTE, (byte) 1);
