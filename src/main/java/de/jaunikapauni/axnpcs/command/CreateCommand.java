@@ -33,6 +33,9 @@ public class CreateCommand implements CommandExecutor {
         if(args.length == 0){
             return false;
         }
+        if(args.length < 2){
+            return true;
+        }
         Villager npc = p.getWorld().spawn(p.getLocation(), Villager.class);
 
         npc.setAI(false);
