@@ -10,6 +10,7 @@ import org.bukkit.entity.Villager;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 public class CreateCommand implements CommandExecutor {
@@ -42,10 +43,7 @@ public class CreateCommand implements CommandExecutor {
 
         String id = UUID.randomUUID().toString();
         String path = "npcs."+ id;
-        String cmd = "";
-        for(int i = 1; i < args.length; i++){
-            cmd += args[i] + " ";
-        }
+        String cmd = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
 
         reference.getConfig().set(path + ".name", args[0]);
         reference.getConfig().set(path + ".location", p.getLocation());
