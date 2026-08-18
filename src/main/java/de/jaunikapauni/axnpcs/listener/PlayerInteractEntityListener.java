@@ -1,6 +1,7 @@
 package de.jaunikapauni.axnpcs.listener;
 
 import de.jaunikapauni.axnpcs.AxNPCs;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
@@ -32,7 +33,7 @@ public class PlayerInteractEntityListener implements Listener {
             }
             for(String key : reference.getConfig().getConfigurationSection("npcs").getKeys(false)){
                 String path = "npcs." + key;
-                Location loc = reference.getConfig().getLocation(path + ".location");
+                Location loc = new Location(Bukkit.getWorld(reference.getConfig().getString(path + ".world")), reference.getConfig().getDouble(path + ".x"), reference.getConfig().getDouble(path + ".y"), reference.getConfig().getDouble(path + ".z"));
                 if(loc.distanceSquared(entity.getLocation()) < 1.0){
                     String cmd = reference.getConfig().getString(path + ".command");
                     p.performCommand(cmd);
