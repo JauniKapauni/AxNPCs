@@ -27,10 +27,6 @@ public class CreateCommand implements CommandExecutor {
         }
         Player p = (Player) sender;
         NamespacedKey npcKey = new NamespacedKey(reference, "npc");
-        if(!p.hasPermission("axnpcs.create")){
-            p.sendMessage("You don't have the permission! [axnpcs.create]");
-            return true;
-        }
         if(args.length == 0){
             return false;
         }
@@ -42,8 +38,6 @@ public class CreateCommand implements CommandExecutor {
         npc.setAI(false);
         npc.setInvulnerable(true);
 
-        npc.setCustomName(args[0]);
-        npc.setCustomNameVisible(false);
         npc.getPersistentDataContainer().set(npcKey, PersistentDataType.BYTE, (byte) 1);
 
         String id = UUID.randomUUID().toString();

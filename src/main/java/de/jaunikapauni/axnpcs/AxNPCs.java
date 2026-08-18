@@ -66,8 +66,6 @@ public final class AxNPCs extends JavaPlugin {
                 Villager npc = loc.getWorld().spawn(loc, Villager.class);
                 npc.setAI(false);
                 npc.setInvulnerable(true);
-                npc.setCustomName(name);
-                npc.setCustomNameVisible(false);
                 npc.getPersistentDataContainer().set(npcKey, PersistentDataType.BYTE, (byte) 1);
             }
         }
