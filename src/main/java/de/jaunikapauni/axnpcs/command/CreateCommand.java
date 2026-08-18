@@ -1,6 +1,7 @@
 package de.jaunikapauni.axnpcs.command;
 
 import de.jaunikapauni.axnpcs.AxNPCs;
+import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -42,7 +43,7 @@ public class CreateCommand implements CommandExecutor {
         npc.setInvulnerable(true);
 
         npc.setCustomName(args[0]);
-        npc.setCustomNameVisible(true);
+        npc.setCustomNameVisible(false);
         npc.getPersistentDataContainer().set(npcKey, PersistentDataType.BYTE, (byte) 1);
 
         String id = UUID.randomUUID().toString();
@@ -50,7 +51,13 @@ public class CreateCommand implements CommandExecutor {
         String cmd = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
 
         reference.getConfig().set(path + ".name", args[0]);
-        reference.getConfig().set(path + ".location", p.getLocation());
+        Location loc = p.getLocation();
+        reference.getConfig().set(path + ".world", loc.getWorld().getName());
+        reference.getConfig().set(path + ".x", loc.getX());
+        reference.getConfig().set(path + ".y", loc.getY());
+        reference.getConfig().set(path + ".z", loc.getZ());
+        reference.getConfig().set(path + ".yaw", loc.getYaw());
+        reference.getConfig().set(path + ".pitch", loc.getPitch());
         reference.getConfig().set(path + ".command", cmd);
         reference.saveConfig();
 

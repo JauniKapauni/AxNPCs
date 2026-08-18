@@ -48,7 +48,11 @@ public final class AxNPCs extends JavaPlugin {
         for(String key : getConfig().getConfigurationSection("npcs").getKeys(false)){
             String path = "npcs." + key + ".";
 
-            Location loc = getConfig().getLocation(path + "location");
+            World world = Bukkit.getWorld(getConfig().getString(path + "world"));
+            if(world == null){
+                continue;
+            }
+            Location loc = new Location(world, getConfig().getDouble(path + "x"), getConfig().getDouble(path + "y"), getConfig().getDouble(path + "z"), (float) getConfig().getDouble(path + "yaw"), (float) getConfig().getDouble(path + "pitch"));
             loc.getChunk().load();
             Chunk chunk = loc.getChunk();
             for(Entity entity2 : chunk.getEntities()){
@@ -63,7 +67,7 @@ public final class AxNPCs extends JavaPlugin {
                 npc.setAI(false);
                 npc.setInvulnerable(true);
                 npc.setCustomName(name);
-                npc.setCustomNameVisible(true);
+                npc.setCustomNameVisible(false);
                 npc.getPersistentDataContainer().set(npcKey, PersistentDataType.BYTE, (byte) 1);
             }
         }
